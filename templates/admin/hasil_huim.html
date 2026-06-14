@@ -1,0 +1,365 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Hasil HUIM</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        background: #f2f2f2;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        width: 95%;
+        margin: auto;
+        margin-top: 30px;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* ====================================== */
+      /* HEADER */
+      /* ====================================== */
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        gap: 15px;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+      }
+
+      /* ====================================== */
+      /* BUTTON */
+      /* ====================================== */
+
+      .btn {
+        padding: 12px 20px;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: 0.3s;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+      }
+
+      .btn-home {
+        background: #0d6efd;
+      }
+
+      .btn-home:hover {
+        background: #0b5ed7;
+      }
+
+      .btn-input {
+        background: #198754;
+      }
+
+      .btn-input:hover {
+        background: #157347;
+      }
+
+      /* ====================================== */
+      /* TITLE */
+      /* ====================================== */
+
+      h1 {
+        margin: 0;
+      }
+
+      h2 {
+        margin-top: 40px;
+        color: #198754;
+      }
+
+      /* ====================================== */
+      /* TABLE */
+      /* ====================================== */
+
+      .table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        min-width: 700px;
+      }
+
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+      }
+
+      td {
+        word-break: break-word;
+      }
+
+      th {
+        background: #198754;
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background: #f9f9f9;
+      }
+
+      /* ====================================== */
+      /* INFO BOX */
+      /* ====================================== */
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+
+      .info-card {
+        background: #f8f9fa;
+        border-left: 6px solid #198754;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+      }
+
+      .info-card h3 {
+        margin: 0;
+        font-size: 16px;
+        color: #666;
+      }
+
+      .info-card p {
+        margin-top: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #198754;
+      }
+
+      .info-card small {
+        color: #777;
+        word-break: break-all;
+      }
+
+      /* ====================================== */
+      /* RESPONSIVE */
+      /* ====================================== */
+
+      @media screen and (max-width: 768px) {
+        .container {
+          width: 98%;
+          padding: 15px;
+        }
+
+        h1 {
+          font-size: 20px;
+        }
+
+        h2 {
+          font-size: 18px;
+        }
+
+        table {
+          min-width: 600px;
+        }
+
+        th,
+        td {
+          font-size: 13px;
+          padding: 8px;
+        }
+
+        .info-card p {
+          font-size: 20px;
+        }
+
+        .header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .header-right {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          gap: 10px;
+        }
+
+        .header-right .btn {
+          flex: 1;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- HEADER -->
+      <div class="header">
+        <h1>HASIL HUI FINAL</h1>
+
+        <div class="header-right">
+          <a href="{{ url_for('admin_dashboard') }}" class="btn btn-home"> HALAMAN UTAMA </a>
+
+          <a href="{{ url_for('input_minutil') }}" class="btn btn-input"> INPUT MINUTIL LAGI </a>
+        </div>
+      </div>
+
+      <!-- ====================================== -->
+      <!-- INFO BOX -->
+      <!-- ====================================== -->
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Minutil</h3>
+          <p>{{ minutil }}</p>
+        </div>
+
+        <div class="info-card">
+          <h3>Total HUI</h3>
+          <p>{{ total_hui }}</p>
+        </div>
+
+        <div class="info-card">
+          <h3>Avg Utility</h3>
+          <p>{{ avg_total_utility }}</p>
+        </div>
+
+        <div class="info-card">
+          <h3>Rata-rata U-Support</h3>
+          <p>{{ avg_u_support }}</p>
+        </div>
+
+        <div class="info-card">
+          <h3>Rata-rata U-Confidence</h3>
+          <p>{{ avg_uconf }}</p>
+        </div>
+
+        <div class="info-card">
+          <h3>Waktu Proses</h3>
+          <p>{{ "%.4f"|format(waktu_proses) }} detik</p>
+        </div>
+
+        <!-- ====================================== -->
+        <!-- TOTAL ITEM HUIM -->
+        <!-- ====================================== -->
+
+        <div class="info-card">
+          <h3>Total Item HUIM</h3>
+          <p>{{ total_item }}</p>
+        </div>
+
+        <div class="info-card">
+          <h3>Nama File</h3>
+          <small>{{ nama_file }}</small>
+        </div>
+      </div>
+
+      <!-- ====================================== -->
+      <!-- TABEL HUI -->
+      <!-- ====================================== -->
+
+      <h2>TABEL HUI</h2>
+
+      <div class="table-wrapper">
+        <table>
+          <tr>
+            <th>No</th>
+            <th>Itemset</th>
+            <th>Utility</th>
+          </tr>
+
+          {% for row in hasil_hui %}
+          <tr>
+            <td>{{ loop.index }}</td>
+
+            <td>{{ row['Itemset'] }}</td>
+
+            <td>{{ row['Utility'] }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+
+      <!-- ====================================== -->
+      <!-- TABEL U-SUPPORT -->
+      <!-- ====================================== -->
+
+      <h2>TABEL U-SUPPORT</h2>
+
+      <div class="table-wrapper">
+        <table>
+          <tr>
+            <th>No</th>
+            <th>Itemset</th>
+            <th>Utility</th>
+            <th>U-Support</th>
+          </tr>
+
+          {% for row in hasil_hui %}
+          <tr>
+            <td>{{ loop.index }}</td>
+
+            <td>{{ row['Itemset'] }}</td>
+
+            <td>{{ row['Utility'] }}</td>
+
+            <td>{{ row['u-support'] }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+
+      <!-- ====================================== -->
+      <!-- TABEL U-CONFIDENCE -->
+      <!-- ====================================== -->
+
+      <h2>TABEL U-CONFIDENCE</h2>
+
+      <div class="table-wrapper">
+        <table>
+          <tr>
+            <th>No</th>
+            <th>Rule</th>
+            <th>Antecedent</th>
+            <th>Consequent</th>
+            <th>UConf</th>
+          </tr>
+
+          {% for row in uconf_df %}
+          <tr>
+            <td>{{ loop.index }}</td>
+
+            <td>{{ row['Rule'] }}</td>
+
+            <td>{{ row['Antecedent'] }}</td>
+
+            <td>{{ row['Consequent'] }}</td>
+
+            <td>{{ row['uconf'] }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

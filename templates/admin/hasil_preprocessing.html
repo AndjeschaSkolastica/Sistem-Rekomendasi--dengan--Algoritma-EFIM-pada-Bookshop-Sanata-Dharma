@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Hasil Preprocessing</title>
+
+    <style>
+      /* =====================================
+        HEADER
+        ===================================== */
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      /* =====================================
+      BUTTON HOME
+      ===================================== */
+
+      .btn-home {
+        display: inline-block;
+        padding: 12px 20px;
+        background: black;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+
+      .btn-home:hover {
+        background: #333;
+      }
+      body {
+        font-family: Arial;
+        background: #f2f2f2;
+      }
+
+      .container {
+        width: 95%;
+        margin: auto;
+        margin-top: 30px;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        font-size: 14px;
+      }
+
+      th {
+        background: #198754;
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background: #f9f9f9;
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 15px 25px;
+        background: #0d6efd;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+
+      /* =====================================
+RINGKASAN
+===================================== */
+
+      .summary {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 25px;
+      }
+
+      .card {
+        background: #f8f9fa;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        min-width: 250px;
+      }
+
+      .card h3 {
+        margin: 0;
+        color: #198754;
+      }
+
+      .card p {
+        margin-top: 10px;
+        font-size: 24px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>HASIL PREPROCESSING</h1>
+
+        <a href="{{ url_for('admin_dashboard') }}" class="btn-home"> HALAMAN UTAMA </a>
+      </div>
+
+      <!-- =====================================
+      RINGKASAN DATA
+      ===================================== -->
+
+      <div class="summary">
+        <div class="card">
+          <h3>Total Data</h3>
+          <p>{{ total_data }}</p>
+        </div>
+
+        <div class="card">
+          <h3>Total Keuntungan</h3>
+          <p>Rp {{ "{:,.0f}".format(total_keuntungan) }}</p>
+        </div>
+      </div>
+
+      <table>
+        <tr>
+          {% for k in kolom %}
+
+          <th>{{ k }}</th>
+
+          {% endfor %}
+        </tr>
+
+        {% for row in data %}
+
+        <tr>
+          {% for k in kolom %}
+
+          <td>{{ row[k] }}</td>
+
+          {% endfor %}
+        </tr>
+
+        {% endfor %}
+      </table>
+
+      <a href="{{ url_for('input_minutil') }}" class="btn"> LANJUT INPUT MINUTIL </a>
+    </div>
+  </body>
+</html>
