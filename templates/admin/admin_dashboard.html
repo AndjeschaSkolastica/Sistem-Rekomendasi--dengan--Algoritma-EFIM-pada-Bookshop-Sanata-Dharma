@@ -1,0 +1,402 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Dashboard Admin</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial;
+        background: #f2f2f2;
+      }
+
+      /* =====================================
+           NAVBAR
+      ===================================== */
+      .navbar {
+        background: #1f2937;
+        color: white;
+        padding: 20px;
+
+        display: flex;
+        align-items: center;
+
+        flex-wrap: nowrap;
+      }
+
+      .navbar h1 {
+        margin: 0;
+      }
+
+      .navbar h1 {
+        margin: 0;
+      }
+
+      /* =====================================
+           CONTAINER
+      ===================================== */
+
+      .container {
+        width: 90%;
+
+        margin: auto;
+
+        margin-top: 40px;
+
+        margin-bottom: 50px;
+      }
+
+      /* =====================================
+           GRID MENU
+      ===================================== */
+
+      .grid {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 30px;
+      }
+
+      /* =====================================
+           CARD
+      ===================================== */
+
+      .card {
+        background: white;
+
+        padding: 40px;
+
+        border-radius: 12px;
+
+        text-align: center;
+
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+        transition: 0.3s;
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: space-between;
+
+        align-items: center;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card h1 {
+        margin-bottom: 10px;
+
+        color: #333;
+      }
+
+      .card p {
+        color: #666;
+
+        font-size: 16px;
+
+        min-height: 40px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+      }
+
+      /* =====================================
+           BUTTON
+      ===================================== */
+
+      .btn {
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        text-align: center;
+
+        width: 180px;
+
+        min-height: 55px;
+
+        padding: 15px 25px;
+
+        border: none;
+
+        border-radius: 8px;
+
+        color: white;
+
+        font-size: 18px;
+
+        cursor: pointer;
+
+        text-decoration: none;
+
+        font-weight: bold;
+
+        transition: 0.3s;
+
+        margin-top: auto;
+      }
+
+      .btn:hover {
+        opacity: 0.9;
+      }
+
+      .blue {
+        background: #2563eb;
+      }
+
+      .green {
+        background: #16a34a;
+      }
+
+      .orange {
+        background: #f59e0b;
+      }
+
+      /* =====================================
+           STATISTIK
+      ===================================== */
+
+      .statistik {
+        margin-top: 50px;
+
+        display: grid;
+
+        grid-template-columns: repeat(4, 1fr);
+
+        gap: 20px;
+      }
+
+      .stat-box {
+        background: white;
+
+        padding: 25px;
+
+        border-radius: 12px;
+
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+        text-align: center;
+
+        transition: 0.3s;
+      }
+
+      .stat-box:hover {
+        transform: translateY(-3px);
+      }
+
+      .stat-box h3 {
+        margin-bottom: 10px;
+
+        color: #555;
+
+        font-size: 18px;
+      }
+
+      .stat-box h2 {
+        margin: 0;
+
+        font-size: 40px;
+
+        color: #111827;
+      }
+
+      /* =====================================
+           LOGOUT BUTTON
+      ===================================== */
+
+      .logout-btn {
+        margin-left: auto; /* dorong ke kanan */
+        background: #dc2626;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .logout-btn:hover {
+        background: #b91c1c;
+
+        transform: scale(1.03);
+      }
+
+      /* =====================================
+           RESPONSIVE TABLET
+      ===================================== */
+
+      @media (max-width: 1000px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .statistik {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .card {
+          align-items: center;
+        }
+
+        .btn {
+          width: 220px;
+        }
+      }
+
+      /* =====================================
+           RESPONSIVE MOBILE
+      ===================================== */
+
+      @media (max-width: 600px) {
+        .statistik {
+          grid-template-columns: 1fr;
+        }
+
+        .container {
+          width: 95%;
+        }
+
+        .card {
+          padding: 25px;
+        }
+
+        .btn {
+          width: 100%;
+
+          max-width: 250px;
+
+          margin-left: auto;
+
+          margin-right: auto;
+
+          font-size: 16px;
+        }
+
+        .navbar {
+          flex-direction: column;
+
+          text-align: center;
+        }
+
+        .navbar h1 {
+          font-size: 22px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =====================================
+         NAVBAR
+    ===================================== -->
+
+    <div class="navbar">
+      <h1>SISTEM HUIM EFIM</h1>
+
+      <!-- BUTTON LOGOUT -->
+      <a href="/logout" class="logout-btn"> Logout </a>
+    </div>
+
+    <!-- =====================================
+         CONTAINER
+    ===================================== -->
+
+    <div class="container">
+      <!-- =====================================
+           MENU
+      ===================================== -->
+
+      <div class="grid">
+        <!-- =================================
+             UPLOAD DATASET
+        ================================= -->
+
+        <div class="card">
+          <h1>Upload Dataset</h1>
+
+          <p>Upload dataset transaksi lebih dari satu file</p>
+
+          <a href="/admin/upload" class="btn blue"> Upload </a>
+        </div>
+
+        <!-- =================================
+             INPUT MINUTIL
+        ================================= -->
+
+        <div class="card">
+          <h1>Input Minutil</h1>
+
+          <p>Jalankan proses EFIM dan evaluasi HUIM</p>
+
+          <a href="/admin/minutil" class="btn green"> Input </a>
+        </div>
+
+        <!-- =================================
+             LIHAT HASIL
+        ================================= -->
+
+        <div class="card">
+          <h1>Lihat Hasil</h1>
+
+          <p>Melihat hasil dari EFIM yang tersimpan</p>
+
+          <a href="/admin/pilih-model" class="btn orange"> Lihat Hasil </a>
+        </div>
+      </div>
+
+      <!-- =====================================
+           STATISTIK
+      ===================================== -->
+
+      <div class="statistik">
+        <!-- TOTAL DATASET -->
+
+        <div class="stat-box">
+          <h3>Total Dataset</h3>
+
+          <h2>{{ statistik.total_dataset }}</h2>
+        </div>
+
+        <!-- TOTAL MODEL -->
+
+        <div class="stat-box">
+          <h3>Total File HUIM yang Tersimpan</h3>
+
+          <h2>{{ statistik.total_model }}</h2>
+        </div>
+
+        <!-- TOTAL UPLOAD -->
+
+        <div class="stat-box">
+          <h3>Total Upload</h3>
+
+          <h2>{{ statistik.total_upload }}</h2>
+        </div>
+
+        <!-- TOTAL HUI -->
+
+        <div class="stat-box">
+          <h3>Total HUI</h3>
+
+          <h2>{{ statistik.total_hui }}</h2>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Pilih Hasil HUIM</title>
+
+    <!-- ===================================== -->
+    <!-- BOOTSTRAP -->
+    <!-- ===================================== -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+      body {
+        background: #f4f6f9;
+        overflow-x: hidden;
+      }
+
+      /* ===================================== */
+      /* CARD */
+      /* ===================================== */
+
+      .card {
+        border-radius: 20px;
+        border: none;
+        overflow: hidden;
+      }
+
+      .card-header {
+        border-radius: 20px 20px 0 0 !important;
+        padding: 20px 25px;
+      }
+
+      .judul {
+        font-weight: bold;
+      }
+
+      /* ===================================== */
+      /* TABLE */
+      /* ===================================== */
+
+      .table th {
+        text-align: center;
+        vertical-align: middle;
+        white-space: nowrap;
+      }
+
+      .table td {
+        vertical-align: middle;
+      }
+
+      .table-responsive {
+        overflow-x: auto;
+      }
+
+      /* ===================================== */
+      /* MINUTIL */
+      /* ===================================== */
+
+      .minutil-text {
+        font-weight: 600;
+        font-size: 15px;
+        color: #212529;
+      }
+
+      /* ===================================== */
+      /* INFO BOX */
+      /* ===================================== */
+
+      .info-box {
+        background: white;
+
+        border-radius: 16px;
+
+        padding: 18px;
+
+        border-left: 5px solid #198754;
+
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+
+        height: 100%;
+      }
+
+      .info-box h6 {
+        margin: 0;
+
+        color: #666;
+
+        font-size: 14px;
+      }
+
+      .info-box h4,
+      .info-box h5 {
+        margin-top: 12px;
+
+        color: #198754;
+
+        font-weight: bold;
+
+        word-break: break-word;
+      }
+
+      /* ===================================== */
+      /* MODAL */
+      /* ===================================== */
+
+      .modal-content {
+        border: none;
+        border-radius: 22px;
+        overflow: hidden;
+      }
+
+      .modal-header {
+        padding: 20px 25px;
+      }
+
+      .modal-body {
+        background: #f8f9fa;
+        padding: 20px;
+      }
+
+      .modal-footer {
+        padding: 15px 25px;
+      }
+
+      /* ===================================== */
+      /* TABLE CONTAINER */
+      /* ===================================== */
+
+      .table-container {
+        background: white;
+
+        border-radius: 18px;
+
+        padding: 20px;
+
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+
+        margin-bottom: 30px;
+      }
+
+      .table-title {
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      /* ===================================== */
+      /* CUSTOM TABLE */
+      /* ===================================== */
+
+      .custom-table {
+        min-width: 900px;
+      }
+
+      .custom-table th {
+        text-align: center;
+        vertical-align: middle;
+        font-size: 14px;
+      }
+
+      .custom-table td {
+        vertical-align: middle;
+        font-size: 14px;
+      }
+
+      /* ===================================== */
+      /* ITEMSET WRAP */
+      /* ===================================== */
+
+      #isi_tabel_hui td:nth-child(2),
+      #isi_tabel_support td:nth-child(2),
+      #isi_tabel_uconf td:nth-child(2),
+      #isi_tabel_uconf td:nth-child(3),
+      #isi_tabel_uconf td:nth-child(4) {
+        word-break: break-word;
+        white-space: normal;
+      }
+
+      /* ===================================== */
+      /* BADGE */
+      /* ===================================== */
+
+      .badge-custom {
+        font-size: 13px;
+        padding: 8px 14px;
+      }
+
+      /* ===================================== */
+      /* RESPONSIVE */
+      /* ===================================== */
+
+      @media (max-width: 992px) {
+        .modal-body {
+          padding: 15px;
+        }
+
+        .custom-table {
+          min-width: 750px;
+        }
+
+        .info-box h4,
+        .info-box h5 {
+          font-size: 18px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .judul {
+          font-size: 18px;
+        }
+
+        .table th,
+        .table td {
+          font-size: 12px;
+        }
+
+        .custom-table {
+          min-width: 650px;
+        }
+
+        .modal-title {
+          font-size: 18px;
+        }
+
+        .info-box {
+          padding: 15px;
+        }
+
+        .info-box h4,
+        .info-box h5 {
+          font-size: 16px;
+        }
+
+        .table-title {
+          font-size: 18px;
+        }
+
+        .btn {
+          font-size: 12px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .custom-table {
+          min-width: 600px;
+        }
+
+        .modal-body {
+          padding: 10px;
+        }
+
+        .table-container {
+          padding: 12px;
+        }
+
+        .info-box {
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ===================================== -->
+    <!-- CONTAINER -->
+    <!-- ===================================== -->
+
+    <div class="container mt-5 mb-5">
+      <!-- ===================================== -->
+      <!-- CARD -->
+      <!-- ===================================== -->
+
+      <div class="card shadow-lg">
+        <!-- ===================================== -->
+        <!-- HEADER -->
+        <!-- ===================================== -->
+
+        <div class="card-header bg-warning">
+          <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <h3 class="judul text-dark mb-0">PILIH HASIL EFIM</h3>
+
+            <a href="/admin_dashboard" class="btn btn-dark"> Halaman Utama </a>
+          </div>
+        </div>
+
+        <!-- ===================================== -->
+        <!-- BODY -->
+        <!-- ===================================== -->
+
+        <div class="card-body">
+          <!-- ===================================== -->
+          <!-- FLASH -->
+          <!-- ===================================== -->
+
+          {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in messages %}
+
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Sukses!</strong>
+            {{ msg }}
+
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+
+          {% endfor %} {% endif %} {% endwith %}
+
+          <!-- ===================================== -->
+          <!-- PETUNJUK -->
+          <!-- ===================================== -->
+
+          <div class="alert alert-info">
+            <b>Petunjuk Pemilihan Hasil:</b>
+
+            <ul class="mt-2 mb-0">
+              <li>Rata-rata Total Utility cukup besar</li>
+
+              <li>Rata-rata U-Support tinggi</li>
+
+              <li>Rata-rata UConf tinggi</li>
+
+              <li>Total Rule banyak</li>
+
+              <li>Total HUI banyak</li>
+            </ul>
+          </div>
+
+          <!-- ===================================== -->
+          <!-- FORM -->
+          <!-- ===================================== -->
+
+          <form method="POST" action="/simpan-model" onsubmit="return validasiModel();">
+            <!-- ===================================== -->
+            <!-- TABLE -->
+            <!-- ===================================== -->
+
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover align-middle">
+                <thead class="table-success">
+                  <tr>
+                    <th>Pilih</th>
+
+                    <th>Minutil</th>
+
+                    <th>Total HUI</th>
+
+                    <th>Total Item</th>
+
+                    <th>Avg Utility</th>
+
+                    <th>Avg U-Support</th>
+
+                    <th>Avg UConf</th>
+
+                    <th>Waktu Proses</th>
+
+                    <th>Detail</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {% for model in models %}
+
+                  <tr>
+                    <!-- RADIO -->
+
+                    <td class="text-center">
+                      <input type="radio" name="model_terpilih" value="{{ model.nama_file }}" />
+                    </td>
+
+                    <!-- MINUTIL -->
+
+                    <td class="text-center">
+                      <div class="minutil-text">{{ model.minutil }}</div>
+                    </td>
+
+                    <!-- TOTAL HUI -->
+
+                    <td class="text-center">{{ model.total_hui }}</td>
+
+                    <!-- TOTAL ITEM -->
+
+                    <td class="text-center">{{ model.total_item }}</td>
+
+                    <!-- TOTAL UTILITY -->
+
+                    <td class="text-center">{{ model.avg_total_utility }}</td>
+
+                    <!-- AVG SUPPORT -->
+
+                    <td class="text-center">{{ model.avg_u_support }}</td>
+
+                    <!-- AVG UCONF -->
+
+                    <td class="text-center">{{ model.avg_uconf }}</td>
+
+                    <!-- WAKTU PROSES -->
+
+                    <td class="text-center">{{ model.waktu_proses }} detik</td>
+
+                    <!-- DETAIL -->
+
+                    <td class="text-center">
+                      <button type="button" class="btn btn-success btn-sm w-100" onclick="lihatDetail('{{ model.nama_file }}')">Lihat Hasil</button>
+                    </td>
+                  </tr>
+
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+
+            <!-- ===================================== -->
+            <!-- BUTTON -->
+            <!-- ===================================== -->
+
+            <div class="mt-4 text-end">
+              <button type="submit" class="btn btn-primary btn-lg">Gunakan Sebagai Pola Sistem Rekomendasi</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================== -->
+    <!-- MODAL DETAIL -->
+    <!-- ===================================== -->
+
+    <div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-fullscreen-lg-down modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <!-- HEADER -->
+
+          <div class="modal-header bg-success text-white">
+            <div>
+              <h4 class="modal-title fw-bold mb-1">DETAIL HASIL HUIM EFIM</h4>
+
+              <small> Informasi pola HUIM hasil proses EFIM </small>
+            </div>
+
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+
+          <!-- BODY -->
+
+          <div class="modal-body">
+            <!-- INFO BOX -->
+
+            <div class="row g-3 mb-4">
+              <!-- FILE -->
+
+              <div class="col-xl-3 col-lg-6 col-md-6">
+                <div class="info-box">
+                  <h6>Nama File</h6>
+
+                  <h5 id="modal_file" style="font-size: 17px"></h5>
+                </div>
+              </div>
+
+              <!-- TOTAL HUI -->
+
+              <div class="col-xl-3 col-lg-6 col-md-6">
+                <div class="info-box text-center">
+                  <h6>Total HUI</h6>
+
+                  <h4 id="modal_total_hui"></h4>
+                </div>
+              </div>
+
+              <!-- Rata Rata Utility -->
+
+              <div class="col-xl-3 col-lg-6 col-md-6">
+                <div class="info-box text-center">
+                  <h6>Avg Utility</h6>
+
+                  <h4 id="modal_avg_total_utility"></h4>
+                </div>
+              </div>
+
+              <!-- TOTAL ITEM -->
+
+              <div class="col-xl-3 col-lg-6 col-md-6">
+                <div class="info-box text-center">
+                  <h6>Total Item</h6>
+
+                  <h4 id="modal_total_item"></h4>
+                </div>
+              </div>
+
+              <!-- AVG SUPPORT -->
+
+              <div class="col-xl-3 col-lg-6 col-md-6">
+                <div class="info-box text-center">
+                  <h6>Avg U-Support</h6>
+
+                  <h4 id="modal_avg_support"></h4>
+                </div>
+              </div>
+
+              <!-- AVG UCONF -->
+
+              <div class="col-xl-3 col-lg-6 col-md-6">
+                <div class="info-box text-center">
+                  <h6>Avg UConf</h6>
+
+                  <h4 id="modal_avg_uconf"></h4>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===================================== -->
+            <!-- TABEL HUI -->
+            <!-- ===================================== -->
+
+            <div class="table-container">
+              <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                <h5 class="table-title text-success mb-0">TABEL HUI</h5>
+
+                <span class="badge bg-success badge-custom"> HASIL HUI </span>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover align-middle custom-table">
+                  <thead class="table-success">
+                    <tr>
+                      <th>No</th>
+
+                      <th>Itemset</th>
+
+                      <th>Utility</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="isi_tabel_hui"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ===================================== -->
+            <!-- TABEL U-SUPPORT -->
+            <!-- ===================================== -->
+
+            <div class="table-container">
+              <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                <h5 class="table-title text-primary mb-0">TABEL U-SUPPORT</h5>
+
+                <span class="badge bg-primary badge-custom"> U-SUPPORT </span>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover align-middle custom-table">
+                  <thead class="table-primary">
+                    <tr>
+                      <th>No</th>
+
+                      <th>Itemset</th>
+
+                      <th>Utility</th>
+
+                      <th>U-Support</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="isi_tabel_support"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ===================================== -->
+            <!-- TABEL U-CONFIDENCE -->
+            <!-- ===================================== -->
+
+            <div class="table-container">
+              <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                <h5 class="table-title text-danger mb-0">TABEL U-CONFIDENCE</h5>
+
+                <span class="badge bg-danger badge-custom"> U-CONFIDENCE </span>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover align-middle custom-table">
+                  <thead class="table-danger">
+                    <tr>
+                      <th>No</th>
+
+                      <th>Rule</th>
+
+                      <th>Antecedent</th>
+
+                      <th>Consequent</th>
+
+                      <th>UConf</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="isi_tabel_uconf"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- FOOTER -->
+
+          <div class="modal-footer bg-light">
+            <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================== -->
+    <!-- JS BOOTSTRAP -->
+    <!-- ===================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ===================================== -->
+    <!-- JAVASCRIPT -->
+    <!-- ===================================== -->
+
+    <script>
+      async function lihatDetail(namaFile) {
+        try {
+          const response = await fetch(`/admin/detail_model/${encodeURIComponent(namaFile)}`);
+
+          if (!response.ok) {
+            throw new Error("Gagal mengambil data");
+          }
+
+          const data = await response.json();
+
+          // =====================================
+          // SET INFO
+          // =====================================
+
+          document.getElementById("modal_file").innerText = data.nama_file;
+
+          document.getElementById("modal_total_hui").innerText = data.total_hui;
+
+          document.getElementById("modal_avg_total_utility").innerText = data.avg_total_utility;
+
+          document.getElementById("modal_total_item").innerText = data.total_item;
+
+          document.getElementById("modal_avg_support").innerText = data.avg_u_support;
+
+          document.getElementById("modal_avg_uconf").innerText = data.avg_uconf;
+
+          // =====================================
+          // TABEL HUI
+          // =====================================
+
+          let htmlHui = "";
+
+          data.hasil_hui.forEach((row, index) => {
+            htmlHui += `
+              <tr>
+
+                <td class="text-center">
+                  ${index + 1}
+                </td>
+
+                <td>
+                  ${row.Itemset}
+                </td>
+
+                <td class="text-center">
+                  ${row.Utility}
+                </td>
+
+              </tr>
+            `;
+          });
+
+          document.getElementById("isi_tabel_hui").innerHTML = htmlHui;
+
+          // =====================================
+          // TABEL SUPPORT
+          // =====================================
+
+          let htmlSupport = "";
+
+          data.hasil_hui.forEach((row, index) => {
+            htmlSupport += `
+              <tr>
+
+                <td class="text-center">
+                  ${index + 1}
+                </td>
+
+                <td>
+                  ${row.Itemset}
+                </td>
+
+                <td class="text-center">
+                  ${row.Utility}
+                </td>
+
+                <td class="text-center">
+                  ${row["u-support"]}
+                </td>
+
+              </tr>
+            `;
+          });
+
+          document.getElementById("isi_tabel_support").innerHTML = htmlSupport;
+
+          // =====================================
+          // TABEL UCONF
+          // =====================================
+
+          let htmlUconf = "";
+
+          data.uconf_df.forEach((row, index) => {
+            htmlUconf += `
+              <tr>
+
+                <td class="text-center">
+                  ${index + 1}
+                </td>
+
+                <td>
+                  ${row.Rule}
+                </td>
+
+                <td>
+                  ${row.Antecedent}
+                </td>
+
+                <td>
+                  ${row.Consequent}
+                </td>
+
+                <td class="text-center">
+                  ${row.uconf}
+                </td>
+
+              </tr>
+            `;
+          });
+
+          document.getElementById("isi_tabel_uconf").innerHTML = htmlUconf;
+
+          // =====================================
+          // SHOW MODAL
+          // =====================================
+
+          const modal = new bootstrap.Modal(document.getElementById("detailModal"));
+
+          modal.show();
+        } catch (error) {
+          console.log(error);
+
+          alert("Gagal memuat hasil HUIM");
+        }
+      }
+    </script>
+
+    <!-- ===================================== -->
+    <!-- VALIDASI -->
+    <!-- ===================================== -->
+
+    <script>
+      function validasiModel() {
+        const modelDipilih = document.querySelector('input[name="model_terpilih"]:checked');
+
+        if (!modelDipilih) {
+          alert("Hasil belum dipilih!");
+
+          return false;
+        }
+
+        alert("Hasil berhasil disimpan sebagai pola sistem rekomendasi");
+
+        return true;
+      }
+    </script>
+  </body>
+</html>
